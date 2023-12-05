@@ -29,6 +29,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.Fork }}
 
+
+
+      - name: Lowercase Repository Name
+        id: lowercaserepo
+        run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+
+
+
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
